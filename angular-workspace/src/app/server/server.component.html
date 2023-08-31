@@ -1,0 +1,14 @@
+<p>server works!</p>
+<button class="btn btn-primary" [disabled]="!allowedAddServer"
+(click)="onServerCreationStatus()"> Add Server </button>
+
+<h4> {{ creatioStatus}}</h4>
+
+<p> {{ allowedAddServer }}</p>
+ <div class="container">
+    property binding
+    <p [innerText]="allowedAddServer"></p>
+ </div>
+<p>
+    {{'server'}} Id is {{ serverId }} with status {{ getServerStatus()}}
+</p>
