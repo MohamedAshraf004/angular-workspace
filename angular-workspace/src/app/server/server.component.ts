@@ -3,31 +3,27 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
-  styleUrls: ['./server.component.css']
+  // styleUrls: ['./server.component.css'],
+  styles: [
+    `
+      .online : {
+        color : white;      
+      }
+    `
+  ]
 })
-export class ServerComponent {
-    allowedAddServer = false;
-    serverId = 5;
-    status : string = 'Active';
-    creatioStatus = "No Creation";
-    serverName: string = ""
-    constructor(){
-      setTimeout(()=>{
-        this.allowedAddServer = true
-      },2000)
+export class ServerComponent {   
+  
+  serverId : number = 15; 
+  status : string = 'online';
+  constructor(){
+    this.status = Math.random() > 0.5 ? 'online' : 'offline';
+  }
+    
+    getColor(){
+      return this.status === 'online' ? 'green' : 'red';
     }
-
     getServerStatus() : string{
     return this.status;
-    }
-
-    onServerCreationStatus(){
-      this.creatioStatus = "Server Is Created! Server Name Is : " + this.serverName;  
-    }
-    onServerUpdateName(event:Event){
-      let target =(<HTMLInputElement>event.target);
-    this.serverName = target.value;
-      console.log(target.value)
-    }
-
+    }    
 }

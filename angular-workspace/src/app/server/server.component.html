@@ -1,24 +1,6 @@
-<h2>server works!</h2>
-<div class="container">
-    <label> Server Name</label>
-    <input class="form-control" type="text" (input)="onServerUpdateName($event)"/>
-    <input class="form-control" type="text" [(ngModel)]="serverName"/>
-    <p>Server Name is : {{serverName}}</p>
-
-    <button class="btn btn-info" [disabled]="serverName === ''" (click)="serverName = ''">Reset</button>
-    <button class="btn btn-primary" [disabled]="!allowedAddServer"
-    (click)="onServerCreationStatus()"> Add Server </button>
-    
-    <h4> {{ creatioStatus}}</h4>
-    
-</div>
 
 
-<p> {{ allowedAddServer }}</p>
- <div class="container">
-    property binding
-    <p [innerText]="allowedAddServer"></p>
- </div>
-<p>
+
+<p [ngStyle]="{backgroundColor: getColor()}" [ngClass]="{online: status === 'online'}">
     {{'server'}} Id is {{ serverId }} with status {{ getServerStatus()}}
 </p>
