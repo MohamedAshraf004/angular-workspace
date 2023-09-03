@@ -14,8 +14,9 @@ import { Component } from '@angular/core';
 })
 export class ServerComponent {   
   
-  serverId : number = 15; 
+  public serverId : number = 15; 
   status : string = 'online';
+  serverDetails : string = "Server Details"
   constructor(){
     this.status = Math.random() > 0.5 ? 'online' : 'offline';
   }

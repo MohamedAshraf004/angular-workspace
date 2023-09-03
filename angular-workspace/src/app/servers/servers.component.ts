@@ -8,12 +8,14 @@ import { Component } from '@angular/core';
 export class ServersComponent {
   allowedAddServer = false;
   allowedServers : string  = "Testing Server is allowed"
-  serverId = 5;
+  serverId : number = Number.NaN;
   status : string = 'Active';
   creationStatus = "No Creation";
   serverName: string = ""
   serverCreated : boolean = false;
   servers = ['TestingServer', 'StagingServer'];
+  serverIds : number[] = [];
+
   constructor(){
     this.status = Math.random() > 0.5 ? 'online' : 'offline';
     setTimeout(()=>{
@@ -25,11 +27,13 @@ export class ServersComponent {
   onServerCreationStatus(){
     this.serverCreated = true
     this.servers.push(this.serverName);
+    this.serverIds.push(this.serverId)
     this.creationStatus = "Server Is Created! Server Name Is : " + this.serverName;  
   }
   onServerUpdateName(event:Event){
     let target =(<HTMLInputElement>event.target);
-  this.serverName = target.value;
+    this.serverName = target.value;
     console.log(target.value)
+    
   }
 }

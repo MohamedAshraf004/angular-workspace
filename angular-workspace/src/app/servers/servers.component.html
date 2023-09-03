@@ -1,10 +1,11 @@
 <h2>server works!</h2>
 <div class="container">
     <label> Server Name</label>
-    <input class="form-control" type="text" (input)="onServerUpdateName($event)"/>
+    <!-- <input class="form-control" type="text" (input)="onServerUpdateName($event)"/> -->
     <input class="form-control" type="text" [(ngModel)]="serverName"/>
     <p>Server Name is : {{serverName}}</p>
-
+    <input class="form-control" type="number" [(ngModel)]="serverId"/>
+    <p>Server Id is : {{serverId}}</p>
     <button class="btn btn-info" [disabled]="serverName === ''" (click)="serverName = ''">Reset</button>
     <button class="btn btn-primary" [disabled]="!allowedAddServer"
     (click)="onServerCreationStatus()"> Add Server </button>
@@ -24,4 +25,10 @@
     <p [innerText]="allowedServers"></p>
  </div>
 
-<app-server *ngFor="let server of servers"></app-server>
+<ol>
+    <li *ngFor="let id of serverIds; let i = index" [ngStyle]="{backgroundColor: i > 2 ? 'blue' : 'red'}">
+        <p> server id is {{ id }} :  </p>
+    </li>
+</ol>
+
+<app-server *ngFor="let server of servers; let i = index" [ngStyle]="{backgroundColor: i > 3 ? 'green' : 'blue'}"></app-server>
